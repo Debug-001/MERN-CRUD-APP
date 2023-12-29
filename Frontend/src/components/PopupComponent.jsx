@@ -35,7 +35,7 @@ const PopupComponent = ({ onClose }) => {
           <input
             type="text"
             name="materials"
-            placeholder="Materials"
+            placeholder="Process Name"
             value={formData.materials}
             onChange={handleChange}
             required
@@ -43,7 +43,7 @@ const PopupComponent = ({ onClose }) => {
           <input
             type="number"
             name="productionCost"
-            placeholder="Production Cost"
+            placeholder="Production Items"
             value={formData.productionCost}
             onChange={handleChange}
             required
@@ -56,7 +56,7 @@ const PopupComponent = ({ onClose }) => {
             onChange={handleChange}
             required
           />
-          <button type="submit">Create</button>
+          <button type="submit">Add Process</button>
         </form>
       </div>
     </div>

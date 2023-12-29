@@ -1,17 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { fetchItems, createItem, updateItem, deleteItem } from "./api";
 import PopupComponent from "./PopupComponent";
+import { GoPlus } from "react-icons/go";
 
 const TableComponent = () => {
-  const handleRefresh = async () => {
-    try {
-      const updatedItems = await fetchItems();
-      setItems(updatedItems);
-    } catch (error) {
-      console.error("Error refreshing items:", error);
-    }
-  };
-
   const [items, setItems] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -79,57 +71,145 @@ const TableComponent = () => {
   return (
     <section>
       <div className="container">
-        <div className="heading-text">
-          <h1
-            className="font-weight-bolder"
-            style={{ color: "rgb(103, 103, 103)" }}
-          >
-            Crud Operations Task
+        <div className="heading-text mt-5">
+          <p className="font-weight-bold" style={{ color: "grey" }}>
+            Master BOM
+          </p>
+          <h1 style={{ color: "#000" }}>
+            Rear Grill-CFH-CB
+            <div className="btn-group ">
+              <button
+                className="btn1 d-flex justify-content-center align-items-center"
+                onClick={handleCreate}
+              >
+                <GoPlus className="mx-1" size={18} />
+                Add Process
+              </button>
+            </div>
           </h1>
         </div>
         <div className="table-container">
-          <div className="btn-group pt-3">
-            <button className="btn1 px-3 py-1" onClick={handleCreate}>
-              Create
-            </button>
-            <button className="btn2 px-3 py-1" onClick={handleRefresh}>
-              Refresh
-            </button>
-          </div>
           <div className="container mt-4">
             <table>
               <thead>
                 <tr>
-                  <th>Materials</th>
-                  <th>Production Cost</th>
-                  <th>Consumption Items</th>
-                  <th>Actions</th>
+                  <th>
+                    #
+                    <button
+                      type="button"
+                      class="btn  dropdown-toggle dropdown-toggle-split"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      <span class="visually-hidden">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <input type="checkbox" name="" id="" /> A-Z
+                        </a>
+                      </li>
+                      <li>
+                        <hr class="dropdown-divider" />
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <input type="checkbox" name="" id="" /> Z-A
+                        </a>
+                      </li>
+                    </ul>
+                  </th>
+                  <th>
+                    Process Name
+                    <button
+                      type="button"
+                      class="btn  dropdown-toggle dropdown-toggle-split"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      <span class="visually-hidden">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <input type="checkbox" name="" id="" /> A-Z
+                        </a>
+                      </li>
+                      <li>
+                        <hr class="dropdown-divider" />
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <input type="checkbox" name="" id="" /> Z-A
+                        </a>
+                      </li>
+                    </ul>
+                  </th>
+
+                  <th>
+                    Production Items
+                    <button
+                      type="button"
+                      class="btn  dropdown-toggle dropdown-toggle-split"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      <span class="visually-hidden">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <input type="checkbox" name="" id="" /> A-Z
+                        </a>
+                      </li>
+                      <li>
+                        <hr class="dropdown-divider" />
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <input type="checkbox" name="" id="" /> Z-A
+                        </a>
+                      </li>
+                    </ul>
+                  </th>
+
+                  <th>
+                    Consumtion Items
+                    <button
+                      type="button"
+                      class="btn  dropdown-toggle dropdown-toggle-split"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      <span class="visually-hidden">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <input type="checkbox" name="" id="" /> A-Z
+                        </a>
+                      </li>
+                      <li>
+                        <hr class="dropdown-divider" />
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <input type="checkbox" name="" id="" /> Z-A
+                        </a>
+                      </li>
+                    </ul>
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 {items.map((item) => (
-                  <tr key={item._id}>
-                    <td>{item.materials}</td>
-                    <td>{item.productionCost}</td>
-                    <td>{item.consumptionItems}</td>
-                    <td className="d-flex gap-4">
-                      <button
-                        className="px-3 py-1"
-                        onClick={() => handleEdit(item)}
-                      >
-                        Edit
-                      </button>
-                      <button
-                        className="px-3 py-1"
-                        onClick={() => handleDelete(item._id)}
-                      >
-                        Delete
-                      </button>
-                      <button className=" px-3 py-1" onClick={handleRead}>
-                        Read
-                      </button>
-                    </td>
-                  </tr>
+                   <tr key={item._id}>
+                   <td>{item.materials}</td>
+                   {/* <td className="vr"></td> .vr line goes here */}
+                   <td>{item.productionCost}</td>
+                   {/* <td className="vr"></td> .vr line goes here */}
+                   <td>{item.consumptionItems}</td>
+                 </tr>
                 ))}
               </tbody>
             </table>

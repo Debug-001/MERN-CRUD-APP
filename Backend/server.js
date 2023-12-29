@@ -18,6 +18,7 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 const itemSchema = new mongoose.Schema({
+  id: Number,
   materials: String,
   productionCost: Number,
   consumptionItems: String,

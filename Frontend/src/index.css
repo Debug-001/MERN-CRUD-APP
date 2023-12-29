@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Gabarito&family=Montserrat:wght@200;300;400&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -5,15 +6,19 @@
   list-style-type: none;
   scroll-behavior: smooth;
   cursor: none;
+  font-family: "Gabarito", sans-serif;
+  font-family: "Montserrat", sans-serif;
+}
+
+.heading-text p {
+  font-size: large;
+  font-weight: 600;
+  margin-bottom: 0;
 }
 
 .heading-text h1 {
-  margin-top: 5rem;
-}
-
-.heading-text h1:hover {
-  color: black !important;
-  transition: all 0.25s ease-in-out !important;
+  font-weight: 600;
+  font-size: 2rem;
 }
 
 .btn-group {
@@ -23,89 +28,91 @@
 }
 
 .btn1 {
-  border: 2px solid rgb(119, 69, 255);
+  margin-top: -2rem;
+  padding-left: 10px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 13px;
+  font-size: 1.14rem;
+  border: 2px solid #283093;
   background-color: white;
-  color: rgb(119, 69, 255);
-  border-radius: 4px;
-}
-
-.btn2 {
-  border: 2px solid rgb(119, 69, 255);
-  background-color: white;
-  color: rgb(119, 69, 255);
+  color: #283093;
+  font-weight: 600;
   border-radius: 4px;
 }
 
 .btn1.btn1:hover {
   /* cursor: pointer; */
   color: white;
-  background-color: rgb(119, 69, 255);
-  border: 2px solid rgb(119, 69, 255);
+  background-color: #283093;
+  border: 2px solid #283093;
   transition: all 0.25s ease-in-out;
 }
 
-.btn2:hover {
-  /* cursor: pointer; */
-  color: white;
-  background-color: rgb(119, 69, 255);
-  border: 2px solid rgb(119, 69, 255);
-  transition: all 0.25s ease-in-out;
-}
-
-.form-submit{
+.form-submit {
   border: 2px solid #282828;
   color: white;
   background-color: #282828;
   border-radius: 2px;
 }
 
-.form-submit:hover{
+.form-submit:hover {
   border: 2px solid #282828;
   color: #282828;
   background-color: #ffffff;
   border-radius: 2px;
-  transition: all .25s;
+  transition: all 0.25s;
 }
 
-
-.input1::placeholder,.input2,.input3{
+.input1::placeholder,
+.input2,
+.input3 {
   padding-left: 1rem;
   padding-right: 1rem;
 }
 
 table {
   width: 100%;
-  border-collapse: collapse; 
+  border-collapse: collapse;
 }
 
 th {
-  background-color: rgb(146, 217, 255);
+  background-color: #ecedfe;
 }
 
 th {
   padding: 12px 15px;
   text-align: left;
-  border: 2px solid rgb(44, 44, 44);
+  /* border: 2px solid rgb(44, 44, 44); */
   border-radius: 2px;
 }
 
 td {
   padding: 8px 15px;
-  border: 1.1px solid rgb(59, 59, 59);
 }
 
-td button{
-  color: #282828;
+.vr {
+  display: block; /* Change from inline to block */
+  width: 3px;
+  height: 100%; /* Change height to 100% */
+  background: #000000;
+  border: 1px solid #767676;
+  clear: both;
+  overflow: hidden; /* Corrected 'hide' to 'hidden' */
+}
+
+td button {
+  color: #ff1f1f;
   border: #282828 2px solid;
   background-color: white;
   border-radius: 2px;
 }
 
-td button:hover{
+td button:hover {
   color: #ffffff;
   border: #282828 2px solid;
   background-color: #282828;
-  transition: all .25s;
+  transition: all 0.25s;
   border-radius: 2px;
 }
 
@@ -114,14 +121,13 @@ td button:hover{
   color: red;
 }
 
-
 .popup-container {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6); 
+  background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -129,7 +135,7 @@ td button:hover{
 }
 
 .popup-content {
-  background-color: #fff; 
+  background-color: #fff;
   padding: 25px;
   border-radius: 4px;
   width: 1000px;
@@ -157,7 +163,6 @@ td button:hover{
 
 input[type="text"],
 input[type="number"] {
-
   gap: 10rem;
   padding: 10px;
   border: 1px solid #ccc;
@@ -173,9 +178,8 @@ input[type="number"] {
 }
 
 button[type="submit"] {
-  
   padding: 10px 15px;
-  background-color: #007bff; 
+  background-color: #007bff;
   color: white;
   border: none;
   border-radius: 4px;
@@ -186,8 +190,8 @@ button[type="submit"] {
   position: fixed;
   border: 2px solid #4e71ff;
   border-radius: 50%;
-  pointer-events: none; 
-  transform: translate(-50%, -50%); 
+  pointer-events: none;
+  transform: translate(-50%, -50%);
   width: 20px;
   height: 20px;
   z-index: 9999;
@@ -207,7 +211,6 @@ button[type="submit"] {
   top: 50% !important;
   left: 50% !important;
   transform: translate(-50%, -50%) !important;
-
 }
 
 .custom-cursor.hover-effect::before {
@@ -218,7 +221,6 @@ button[type="submit"] {
   animation: ripple 1s infinite;
 }
 
-
-button:hover{
+button:hover {
   cursor: none !important;
 }
