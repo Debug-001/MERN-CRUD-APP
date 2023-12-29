@@ -3,6 +3,8 @@
 
 Steps to Run it Locally!
 
+
+
 1. Clone the Repository or Download the repository as a zip.
 2. Unzip and Open both the folders in your Development Environment.
 3. Run  npm install in the frontend folder.
