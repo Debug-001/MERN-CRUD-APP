@@ -13,7 +13,6 @@ export const fetchItems = async () => {
   }
 };
 
-
 export const createItem = async (data) => {
   const response = await api.post("/items", data);
   return response.data;

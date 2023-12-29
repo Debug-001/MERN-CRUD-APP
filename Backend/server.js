@@ -18,10 +18,18 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 const itemSchema = new mongoose.Schema({
-  id: Number,
   materials: String,
   productionCost: Number,
   consumptionItems: String,
+});
+
+itemSchema.pre('save', function(next) {
+  const doc = this;
+  Item.countDocuments({}, (err, count) => {
+    if (err) return next(err);
+    doc.id = count + 1; 
+    next();
+  });
 });
 
 const Item = mongoose.model('Item', itemSchema);
@@ -60,27 +68,16 @@ app.put('/items/:id', async (req, res) => {
   }
 });
 
-
 app.delete('/items/:id', async (req, res) => {
   try {
     const itemId = req.params.id;
-    await Item.findByIdAndDelete(itemId); 
+    await Item.findByIdAndDelete(itemId);
     res.status(200).send({ message: 'Item deleted successfully' });
   } catch (error) {
     console.error('Error deleting item:', error);
     res.status(500).send({ error: 'Internal Server Error' });
   }
 });
-
-app.get('/items', async (req, res) => {
-  try {
-    const items = await Item.find();
-    res.json(items);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

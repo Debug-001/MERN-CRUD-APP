@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { createItem } from './api';
 
-const PopupComponent = ({ onClose }) => {
+const PopupComponent = ({ onClose, onAdd }) => {
   const [formData, setFormData] = useState({
     materials: '',
     productionCost: '',
     consumptionItems: '',
   });
+
+  const [isOpen, setIsOpen] = useState(true);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,18 +22,21 @@ const PopupComponent = ({ onClose }) => {
     e.preventDefault();
     try {
       await createItem(formData);
-      onClose(); 
-      alert('Item created successfully!');
+      onAdd(formData);
+      setIsOpen(false);
+      setTimeout(() => {
+        onClose();
+      }, 3000);
     } catch (error) {
       console.error('Error creating item:', error);
     }
   };
 
   return (
-    <div className="popup-container">
+    <div className={`popup-container ${isOpen ? '' : 'closed'}`}>
       <div className="popup-content">
         <button className="close-btn" onClick={onClose}>X</button>
-        <form onSubmit={handleSubmit} className='d-flex gap-5'>
+        <form className='d-flex flex-column gap-5'>
           <input
             type="text"
             name="materials"
@@ -43,7 +48,7 @@ const PopupComponent = ({ onClose }) => {
           <input
             type="number"
             name="productionCost"
-            placeholder="Production Items"
+            placeholder="Production Cost"
             value={formData.productionCost}
             onChange={handleChange}
             required
@@ -56,7 +61,7 @@ const PopupComponent = ({ onClose }) => {
             onChange={handleChange}
             required
           />
-          <button type="submit">Add Process</button>
+          <button onClick={handleSubmit} type="submit">Add Process</button>
         </form>
       </div>
     </div>
